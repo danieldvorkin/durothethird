@@ -38,7 +38,7 @@ gem 'rails_admin', '~> 1.3'
 gem 'devise'
 gem 'cancancan', '~> 2.0'
 gem 'best_debugger'
-
+gem 'rails_admin_material'
 
 
 
