@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Durothethird</title>
+    <title>DuroTheThird</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,300italic,300,500,500italic,700,900">
   </head>
 
   <body>
-    <ul>
-      <% if user_signed_in? %>
-        <li>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-        </li>
-      <% else %>
-        <li>
-        <%= link_to('Login', new_user_session_path)  %>  
-        </li>
-      <% end %>
-    </ul>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <section id="pageloader">
+        <div class="loader-item fa fa-spin colored-border"></div>
+    </section> <!-- /#pageloader -->
+
+    <%= render partial: 'layouts/header' %>
+    
     <%= yield %>
   </body>
+  <script>
+    document.addEventListener('turbolinks:load', function() {
+      // makes sure the whole site is loaded
+      $('.loader-item').fadeOut(); // will first fade out the loading animation
+      $('#pageloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+      $('body').delay(350).css({ 'overflow-y': 'visible' });
+    });
+  </script>
 </html>
